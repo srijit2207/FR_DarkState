@@ -1,0 +1,152 @@
+
+
+[General Information]
+Function Name = PB3StateNoRDSC
+Brief Description = Photobleaching 3 state model with no reverse DSC
+Function Source = N/A
+Number Of Parameters = 6
+Function Type = User-Defined
+Function Form = Expression
+Path = 
+Number Of Independent Variables = 1
+Number Of Dependent Variables = 1
+Function Model = Explicit
+
+
+[Fitting Parameters]
+Names = kEx,kEm,kIC,kDSC,kGSR,A
+Initial Values = 3458(F),100000000(F),400000000(F),40000(V),1000(V),1(V)
+Meanings = ?,?,?,?,?,?
+Lower Bounds = --(I, Off),--(I, Off),--(I, Off),--(I, Off),--(I, Off),--(I, Off)
+Upper Bounds = --(I, Off),--(I, Off),--(I, Off),--(I, Off),--(I, Off),--(I, Off)
+Naming Method = User-Defined
+Number Of Significant Digits = 0,0,0,0,0,0
+Unit = ,,,,,
+Format = --,--,--,--,--,--
+CustomDisplay = --,--,--,--,--,--
+
+
+[Independent Variables]
+t = 
+
+
+[Dependent Variables]
+nS0 = 
+
+
+[Formula]
+A*(4*kGSR*(kDSC+kEm+kIC)
+*sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC)))
++exp(-0.5*t*(kDSC+kEm+kEx+kGSR+kIC+
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC)))))
+*kEx*(kDSC+kEm+kEx+kGSR+kIC-
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC))))
+*(-kDSC+kEm+kEx-kGSR+kIC+
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC))))-
+exp(0.5*t*(-kDSC-kEm-kEx-kGSR-kIC+
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC)))))*kEx
+*(-kDSC+kEm+kEx-kGSR+kIC-
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC))))
+*(kDSC+kEm+kEx+kGSR+kIC+
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC)))))/
+(4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC))*
+sqrt((kDSC+kEm+kEx+kGSR+kIC)^2-
+4*(kDSC*(kEx+kGSR)+kGSR*(kEm+kEx+kIC))))
+
+
+[Constraints]
+
+
+[Initializations]
+
+
+[After Fitting]
+
+
+[Constants]
+
+
+[Controls]
+General Linear Constraints = 0
+Initialization Scripts = 0
+Scripts After Fitting = 0
+Number Of Duplicates = N/A
+Duplicate Offset = N/A
+Duplicate Unit = N/A
+Generate Curves After Fitting = 1
+Curve Point Spacing = Uniform on X-Axis Scale
+Generate Peaks After Fitting = 1
+Generate Peaks During Fitting = 1
+Generate Peaks with Baseline = 1
+Paste Parameters to Plot After Fitting = 1
+Paste Parameters to Notes Window After Fitting = 1
+Generate Residuals After Fitting = 0
+Keep Parameters = 0
+Compile On Param Change Script = 1
+Enable Parameters Initialization = 1
+Treat All Numbers As Double = 1
+
+
+[Compile Function]
+Compile = 0
+Compile Parameters Initialization = 1
+OnParamChangeScriptsEnabled = 0
+
+
+[Parameters Initialization]
+kEx = 3.45*10^3;
+kEm = 10^8;
+kIC = 4*10^8;
+
+
+[Origin C Function Header]
+
+
+[Origin C Parameter Initialization Header]
+#pragma numlittype(push, TRUE)
+#include <origin.h>
+
+// Add your special include files here.
+// For example, if you want to use functions from the NAG library, 
+// add the header file for the NAG functions here.
+
+// Add code here for other Origin C functions that you want to define in this file,
+// and access in your parameter initialization.
+
+// You can access C functions defined in other files, if those files are loaded and compiled 
+// in your workspace, and the functions have been prototyped in a header file that you have 
+// included above. 
+	
+// You can access NLSF object methods and properties directly in your function code.
+// You should follow C-language syntax in defining your function. 
+// For instance, if your parameter name is P1, you cannot use p1 in your function code. 
+// When using fractions, remember that integer division such as 1/2 is equal to 0, and not 0.5
+// Use 0.5 or 1/2.0 to get the correct value.
+
+// For more information and examples, please refer to the "User-Defined Fitting Function" 
+// section of the Origin Help file.
+
+
+[Derived Parameter Settings]
+Unit = 
+Names = 
+Meanings = 
+
+
+
+[QuickCheck]
+t=0
+kEx=3458
+kEm=1E8
+kIC=4E8
+kDSC=40000
+kGSR=1000
+A=1
+
