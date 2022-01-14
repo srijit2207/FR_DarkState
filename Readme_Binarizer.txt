@@ -1,6 +1,6 @@
 Single Molecule Trajectory Binarizer Readme File
 Authors: Connor Thomas, Srijit Mukherjee
-JILA-NIST/CU Boulder, CO-80309
+JILA- Boulder, CO-80309
 Matlab Live Script Version Info: Matlab R2021 with fit toolbox
 %----------------------------------------------%
 
